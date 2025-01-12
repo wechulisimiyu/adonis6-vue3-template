@@ -23,15 +23,15 @@ A full-featured starter template combining [AdonisJS 6](https://docs.adonisjs.co
 2. Copy `.env.example` to `.env` and configure your environment variables
 3. Install dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 4. Start the development server:
 
-    ```sh
-    npm run dev
-    ```
+   ```sh
+   npm run dev
+   ```
 
 ## Project Structure
 
@@ -55,19 +55,19 @@ A full-featured starter template combining [AdonisJS 6](https://docs.adonisjs.co
 
 ## Authentication Setup
 
-1. Configure Google OAuth:
+Configure Google OAuth:
 
-   - Visit [Google Cloud Console](https://console.cloud.google.com)
-   - Create a new project
-   - Enable Google OAuth API
-   - Create credentials (OAuth client ID)
-   - Set authorized redirect URI to: `http://localhost:3333/auth/google/callback`
-   - Add credentials to `.env`:
+- Visit [Google Cloud Console](https://console.cloud.google.com)
+- Create a new project
+- Enable Google OAuth API
+- Create credentials (OAuth client ID)
+- Set authorized redirect URI to: `http://localhost:3333/auth/google/callback`
+- Add credentials to `.env`:
 
-     ```env
-     GOOGLE_CLIENT_ID=your_client_id
-     GOOGLE_CLIENT_SECRET=your_client_secret
-     ```
+  ```env
+  GOOGLE_CLIENT_ID=your_client_id
+  GOOGLE_CLIENT_SECRET=your_client_secret
+  ```
 
 ## Frontend Development
 
@@ -78,3 +78,12 @@ A full-featured starter template combining [AdonisJS 6](https://docs.adonisjs.co
 ## Development
 
 ### Commands
+
+| Command          | Description               |
+| ---------------- | ------------------------- |
+| `npm run dev`    | Start development server  |
+| `npm run build`  | Build for production      |
+| `npm start`      | Start production server   |
+| `npm run test`   | Run tests                 |
+| `npm run lint`   | Run eslint                |
+| `npm run format` | Format code with prettier |
