@@ -1,13 +1,14 @@
 import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbRememberMeTokensProvider } from '@adonisjs/auth/session'
 import EmailHistory from '#models/email_history'
 import Role from '#models/role'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations'
 import PasswordResetToken from './password_reset_token.js'
+import EmailVerification from './email_verification.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -29,6 +30,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare fullName: string | null
 
   @column()
+  declare username: string
+
+  @column()
   declare email: string
 
   @column({ serializeAs: null })
@@ -40,8 +44,14 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare provider: string
 
+  @column()
+  declare emailVerified: Boolean | null
+
   @column.dateTime()
-  declare last_login: DateTime
+  declare emailVerifiedAt: DateTime | null
+
+  // @column.dateTime()
+  // declare last_login: DateTime
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -51,6 +61,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @belongsTo(() => Role)
   declare role: BelongsTo<typeof Role>
+
+  @hasOne(() => EmailVerification)
+  declare emailVerification: HasOne<typeof EmailVerification>
 
   @hasMany(() => EmailHistory)
   declare emailHistories: HasMany<typeof EmailHistory>

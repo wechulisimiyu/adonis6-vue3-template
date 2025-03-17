@@ -10,7 +10,7 @@ defineProps<{
       <nav class="flex items-center justify-between p-6 lg:px-8">
         <div class="flex lg:flex-1">
           <Link href="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">PlotMyCourse</span>
+            <span class="sr-only">Template</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
